@@ -16,9 +16,7 @@ export class AppComponent {
   @ViewChild('testInput') // inputにfocusを当てる
   set myInput(_input: ElementRef | undefined) {
     if (_input !== undefined) {
-      setTimeout(() => { // This setTimeout call may not be necessary anymore.
-        _input.nativeElement.focus();
-      }, 0);
+      _input.nativeElement.focus();
     }
   }
 
