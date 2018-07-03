@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  public isOpen = false;
+  public name = 'cipher';
+
+  constructor(
+  ) { }
+
+  @ViewChild('testInput') // inputにfocusを当てる
+  set myInput(_input: ElementRef | undefined) {
+    if (_input !== undefined) {
+      setTimeout(() => { // This setTimeout call may not be necessary anymore.
+        _input.nativeElement.focus();
+      }, 0);
+    }
+  }
+
+  change() {
+    this.isOpen = !this.isOpen;
+  }
 }
